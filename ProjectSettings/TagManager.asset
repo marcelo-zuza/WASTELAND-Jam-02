@@ -6,6 +6,10 @@ TagManager:
   tags:
   - ZombieHead
   - ZombieBody
+  - ammo_automatic_gun
+  - ammo_gun
+  - ammo_grenade
+  - Zombie
   layers:
   - Default
   - TransparentFX

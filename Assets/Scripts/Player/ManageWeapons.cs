@@ -75,6 +75,9 @@ public class ManageWeapons : MonoBehaviour
     public float weaponReloadPosition = -0.3f;
     public float reloadDuration = 0.3f;
 
+    // Zombie Health
+    private ZombieHealth zombieHealth ;
+
 
     void Start()
     {
@@ -121,6 +124,9 @@ public class ManageWeapons : MonoBehaviour
 
         // Weapon initial position
         weaponInitialPosition = weaponGameObject[currentWeapon].transform.localPosition;
+        // Getting zombie HP
+        zombieHealth = GameObject.FindGameObjectWithTag("Zombie").GetComponent<ZombieHealth>();
+        
     }
 
     void Update()
@@ -254,11 +260,16 @@ public class ManageWeapons : MonoBehaviour
 
                 print("You have " + ammos[currentWeapon] + " bullets left\nYou have " + reserveAmmos[currentWeapon] + " reserve bullets");
 
-                GameObject objectTarget;
-                if (hit.collider.gameObject.tag == "Target")
+                
+                if (hit.collider.gameObject.tag == "ZombieBody")
                 {
-                    objectTarget = hit.collider.gameObject;
-                    // objectTarget.GetComponent<ManageNPC>().gotHit();
+                    zombieHealth.TakeDamage(15);
+                    Debug.Log("Zombie acertado no corpo");
+                }
+                else if(hit.collider.gameObject.tag == "ZombieHead")
+                {
+                    zombieHealth.TakeDamage(15 * 2);
+                    Debug.Log("Zombie acertado na cabeça");
                 }
             }
             if(audioSource != null && weaponFX[currentWeapon] != null)
@@ -376,7 +387,14 @@ public class ManageWeapons : MonoBehaviour
             if (tagOfTheOtherObject == "ammo_gun") indexOfAmmoBeingUpdated = WEAPON_GUN;
             if (tagOfTheOtherObject == "ammo_automatic_gun") indexOfAmmoBeingUpdated = WEAPON_AUTO_GUN;
             if (tagOfTheOtherObject == "ammo_grenade") indexOfAmmoBeingUpdated = WEAPON_GRENADE;
-            reserveAmmos[indexOfAmmoBeingUpdated] += 10;
+            if(indexOfAmmoBeingUpdated == WEAPON_GRENADE)
+            {
+                reserveAmmos[indexOfAmmoBeingUpdated] += 5;
+            }
+            else
+            { 
+                reserveAmmos[indexOfAmmoBeingUpdated] += 50; 
+            }
             print(weaponName[indexOfAmmoBeingUpdated] + " got 10 bullets");
 
             //if(ammos[indexOfAmmoBeingUpdated] > maxAmmos[indexOfAmmoBeingUpdated]) ammos[indexOfAmmoBeingUpdated] = maxAmmos[indexOfAmmoBeingUpdated];
