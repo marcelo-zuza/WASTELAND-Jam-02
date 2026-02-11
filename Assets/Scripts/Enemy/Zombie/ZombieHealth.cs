@@ -1,15 +1,20 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class ZombieHealth : MonoBehaviour
 {
     public float health = 100f;
     private Animator anim;
-    private Collider zombieCollider;
+    private Collider[] zombieCollider;
+    private ZombieAI zombieAI;
+    private Rigidbody zombieRigidBody;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         anim = GetComponent<Animator>();
-        zombieCollider = GetComponent<Collider>();
+        zombieCollider = GetComponentsInChildren<Collider>();
+        zombieAI = GetComponent<ZombieAI>();
+        zombieRigidBody = GetComponent<Rigidbody>();
     }
 
     // Update is called once per frame
@@ -29,8 +34,10 @@ public class ZombieHealth : MonoBehaviour
 
     void Die()
     {
-        anim.SetBool("isDead", true);
+        anim.SetBool("IsDead", true);
+        foreach (var col in zombieCollider) col.enabled = false;
         //zombieCollider.gameObject.SetActive(false);
+        zombieAI.isDead = true;
         Debug.Log("Zombie morreu");
     }
 

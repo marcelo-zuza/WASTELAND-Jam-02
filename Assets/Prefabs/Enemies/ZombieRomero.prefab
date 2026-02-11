@@ -14,9 +14,10 @@ GameObject:
   - component: {fileID: 7632774655814028768}
   - component: {fileID: 8490878730650352231}
   - component: {fileID: 772893857250052900}
+  - component: {fileID: 7625664318025594732}
   m_Layer: 0
   m_Name: ZombieRomero
-  m_TagString: Untagged
+  m_TagString: Zombie
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -120,6 +121,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ZombieAI
   visionRay: 10
   attackRay: 1.5
+  zombieAttackDamage: 10
+  attackInterval: 1.2
+  isDead: 0
 --- !u!95 &772893857250052900
 Animator:
   serializedVersion: 7
@@ -142,6 +146,19 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &7625664318025594732
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2877686811113453091}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3af5863ef2dc6f5478e974fc7f884b59, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ZombieHealth
+  health: 100
 --- !u!1 &5136197373978793136
 GameObject:
   m_ObjectHideFlags: 0

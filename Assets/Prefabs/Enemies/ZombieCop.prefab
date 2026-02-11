@@ -122,9 +122,10 @@ GameObject:
   - component: {fileID: 9178598701565634959}
   - component: {fileID: 5971562944596936618}
   - component: {fileID: 8825338850649705020}
+  - component: {fileID: 3077859037268080556}
   m_Layer: 0
   m_Name: ZombieCop
-  m_TagString: Untagged
+  m_TagString: Zombie
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -228,6 +229,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ZombieAI
   visionRay: 10
   attackRay: 1.5
+  zombieAttackDamage: 10
+  attackInterval: 1.2
+  isDead: 0
 --- !u!95 &8825338850649705020
 Animator:
   serializedVersion: 7
@@ -250,6 +254,19 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &3077859037268080556
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2828407923797150024}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3af5863ef2dc6f5478e974fc7f884b59, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ZombieHealth
+  health: 100
 --- !u!1001 &1284966314911175629
 PrefabInstance:
   m_ObjectHideFlags: 0

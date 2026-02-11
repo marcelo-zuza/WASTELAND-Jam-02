@@ -124,8 +124,6 @@ public class ManageWeapons : MonoBehaviour
 
         // Weapon initial position
         weaponInitialPosition = weaponGameObject[currentWeapon].transform.localPosition;
-        // Getting zombie HP
-        zombieHealth = GameObject.FindGameObjectWithTag("Zombie").GetComponent<ZombieHealth>();
         
     }
 
@@ -263,13 +261,27 @@ public class ManageWeapons : MonoBehaviour
                 
                 if (hit.collider.gameObject.tag == "ZombieBody")
                 {
-                    zombieHealth.TakeDamage(15);
-                    Debug.Log("Zombie acertado no corpo");
+                    zombieHealth = hit.collider.GetComponentInParent<ZombieHealth>();
+                    if(zombieHealth != null)
+                    {
+                        zombieHealth.TakeDamage(15);
+                        Debug.Log("Zombie acertado no corpo");
+                    }
+                    else
+                    {
+                        Debug.Log("Zombie health componente not found");
+                    }
+                    
                 }
                 else if(hit.collider.gameObject.tag == "ZombieHead")
                 {
-                    zombieHealth.TakeDamage(15 * 2);
-                    Debug.Log("Zombie acertado na cabeça");
+                    zombieHealth = hit.collider.GetComponentInParent<ZombieHealth>();
+
+                    if(zombieHealth != null)
+                    {
+                        zombieHealth.TakeDamage(15 * 2);
+                        Debug.Log("Zombie acertado na cabeça");
+                    }     
                 }
             }
             if(audioSource != null && weaponFX[currentWeapon] != null)

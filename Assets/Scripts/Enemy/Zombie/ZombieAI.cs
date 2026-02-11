@@ -16,6 +16,8 @@ public class ZombieAI : MonoBehaviour
     private float attackTimer = 0f;
     private PlayerHealth playerHealth;
 
+    public bool isDead = false;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -45,7 +47,7 @@ public class ZombieAI : MonoBehaviour
 
     void Chase()
     {
-        
+        if (isDead) return;
         agent.isStopped = false;
         agent.SetDestination(player.position);
 
@@ -55,6 +57,7 @@ public class ZombieAI : MonoBehaviour
 
     void Attack()
     {
+        if (isDead) return;
         agent.isStopped = true;
         transform.rotation.SetLookRotation(player.position);
         anim.SetBool("attacking", true);

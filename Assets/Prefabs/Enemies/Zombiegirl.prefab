@@ -14,9 +14,10 @@ GameObject:
   - component: {fileID: 2834739266571481845}
   - component: {fileID: 4156924264921651911}
   - component: {fileID: 2824298202582822345}
+  - component: {fileID: 2469702623302436898}
   m_Layer: 0
   m_Name: Zombiegirl
-  m_TagString: Untagged
+  m_TagString: Zombie
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -120,6 +121,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ZombieAI
   visionRay: 10
   attackRay: 1.5
+  zombieAttackDamage: 10
+  attackInterval: 1.2
+  isDead: 0
 --- !u!95 &2824298202582822345
 Animator:
   serializedVersion: 7
@@ -142,6 +146,19 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &2469702623302436898
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6497212331930352264}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3af5863ef2dc6f5478e974fc7f884b59, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ZombieHealth
+  health: 100
 --- !u!1 &6914960274610528324
 GameObject:
   m_ObjectHideFlags: 0
@@ -154,7 +171,7 @@ GameObject:
   - component: {fileID: 2135469206075129117}
   m_Layer: 0
   m_Name: HeadHitBox
-  m_TagString: Untagged
+  m_TagString: ZombieHead
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -207,7 +224,7 @@ GameObject:
   - component: {fileID: 5639081030662966201}
   m_Layer: 0
   m_Name: BodyHitBox
-  m_TagString: Untagged
+  m_TagString: ZombieBody
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
